@@ -85,6 +85,7 @@ sudo apt install php8.1-mbstring php8.1-mysql php8.1-sockets php8.1-bz2 php8.1-g
 ```
 sudo vim /etc/apache2/apache2.conf
 sudo vim /etc/apache2/sites-available/000-default.conf
+```
 
 ## set web-server user
 ```
