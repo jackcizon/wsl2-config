@@ -96,11 +96,7 @@ sudo chown -R www-data:www-data dir_path
 chmod -R 777 /var/www
 rm -r html
 touch index.php
-```
-
-```
 DocumentRoot /var/www
-
 <Directory /var/www>
      Options Indexes FollowSymLinks
      AllowOverride All
