@@ -1,37 +1,40 @@
 # wsl2 php dev configs and commands
 
-# install wsl2, set php development
-
-# set passwd for root
+## set passwd for root
+```
 sudo su
 sudo apt update
 sudo apt upgrade
-
-# install php
+```
+## install php
+```
 sudo apt install php
 which apache2
 sudo apt update
+```
 
-# install gui apps
+## install gui apps
+```
 sudo apt install gedit -y
 sudo apt install nautilus -y
 sudo apt install vlc -y
 sudo apt install x11-apps -y
 sudo apt install firefox
 sudo apt update
-firefox
 cd /tmp
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install --fix-missing ./google-chrome-stable_current_amd64.deb
-google-chrome
+```
 
-# install and config git
+## install and config git
+```
 sudo apt-get install git
 git config --global user.name "jackcizon"
 git config --global user.email "jack20021213cn@gmail.com"
-ls
+```
 
-# install mysql and set passwd for root
+## install mysql and set passwd for root
+```
 sudo apt update
 mysql --version
 sudo apt install mysql-server
@@ -39,24 +42,31 @@ systemctl status mysql
 sudo mysql
 mysql -u root -p
 systemctl status mysql
-
-# install redis
+```
+## install redis
+```
 sudo apt update
 sudo apt install redis-server
 sudo service redis-server start
 sudo service redis-server status
+```
 
-# go to wt, check docker-desktop
+## go to wt, check docker-desktop
+```
 docker image ls --all
 docker run hello-world
 sudo apt update
+```
 
-# install c/c++ tools
+## install c/c++ tools
+```
 sudo apt install g++ gdb make ninja-build rsync zip
 sudo apt-get install curl
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+```
 
-# install NodeJS
+## install NodeJS
+```
 command -v nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -64,23 +74,31 @@ export NVM_DIR="$HOME/.nvm"
 nvm install --lts
 nvm ls
 which npm
+```
 
-# config php.ini
+## config php.ini
+```
 sudo apt install php8.1-mbstring php8.1-mysql php8.1-sockets php8.1-bz2 php8.1-gd php8.1-ftp php8.1-curl php8.1-openssl php8.1-xdebug
+```
 
+## apache conf
+```
+sudo vim /etc/apache2/apache2.conf
+sudo vim /etc/apache2/sites-available/000-default.conf
 
-# apache conf
-/etc/apache2/apache2.conf
-/etc/apache2/sites-available/000-default.conf
-
-#set web-server user
+## set web-server user
+```
 sudo chown -R www-data:www-data dir_path
+```
 
-# run as root
+## run as root
+```
 chmod -R 777 /var/www
 rm -r html
 touch index.php
+```
 
+```
 DocumentRoot /var/www
 
 <Directory /var/www>
@@ -88,9 +106,11 @@ DocumentRoot /var/www
      AllowOverride All
      Require all granted
 </Directory>
+```
 
-# vhosts conf
-#locate at /etc/apache2/sites-available/your_domain
+## vhosts conf
+### locate at /etc/apache2/sites-available/your_domain
+```
 <VirtualHost domain1:80>
      ServerName domain1.com
      DocumentRoot /var/www/domain1.com/public_html
@@ -104,12 +124,18 @@ DocumentRoot /var/www
      ErrorLog ${APACHE_LOG_DIR}/domain1.com-error.log
      CustomLog ${APACHE_LOG_DIR}/domain1.com-access.log combined
 </VirtualHost>
+```
 
-#add soft link
+## add soft link
+```
 sudo ln -s /etc/apache2/sites-available/yourdomain.com.conf /etc/apache2/sites-enabled/
+```
 
-#edit /etc/hosts
+## edit /etc/hosts
+```
 127.0.0.1 domain1.com
-
-#solve laravel-app code 500 error
+```
+## solve laravel-app code 500 error
+```
 sudo chown -R www-data:www-data /var/www/laravel-app
+```
