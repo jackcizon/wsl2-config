@@ -136,3 +136,10 @@ sudo ln -s /etc/apache2/sites-available/yourdomain.com.conf /etc/apache2/sites-e
 ```
 sudo chown -R www-data:www-data /var/www/laravel-app
 ```
+## set en-us as default charset, enable zh-cn
+```
+export LANG=en_US.UTF-8
+sudo apt install fonts-wqy-zenhei
+
+
+```
