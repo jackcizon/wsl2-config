@@ -140,6 +140,42 @@ sudo chown -R www-data:www-data /var/www/laravel-app
 ```
 export LANG=en_US.UTF-8
 sudo apt install fonts-wqy-zenhei
-
-
 ```
+
+## config nginx for PHP-FPM(php fastcgi process manager)
+stop apache2
+create file names `site1.com` in /etc/nginx/site-available
+add lines:
+```
+server {
+        listen 80;
+        listen [::]:80;
+
+        server_name site1.com www.site1.com;
+
+        root /var/www/site1.com/public;
+        index index.html index.htm index.php;
+
+        location / {
+                try_files $uri $uri/ /index.php?$query_string;
+         }
+
+         location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                # see detail in /var/run/php
+                fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+        }
+        location ~ /\.ht {
+                deny all;
+        }
+}
+```
+add soft link in sites-enabled
+
+## check php-fpm status
+```
+sudo systemctl status php{version}-fpm
+```
+
+### if there any issues, see detail in /var/log/nginx/error.log
+### see php-fpm config in /etc/php/{version}/fpm/php-fpm.conf
