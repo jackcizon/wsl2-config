@@ -29,8 +29,8 @@ sudo apt install --fix-missing ./google-chrome-stable_current_amd64.deb
 ## install and config git
 ```
 sudo apt-get install git
-git config --global user.name "jackcizon"
-git config --global user.email "jack20021213cn@gmail.com"
+git config --global user.name "yourname"
+git config --global user.email "yourname@emaildomain"
 ```
 
 ## install mysql and set passwd for root
@@ -51,7 +51,7 @@ sudo service redis-server start
 sudo service redis-server status
 ```
 
-## go to wt, check docker-desktop
+## go to wt(windows terminal), check docker-desktop
 ```
 docker image ls --all
 docker run hello-world
@@ -108,18 +108,18 @@ DocumentRoot /var/www
 ## vhosts conf
 ### locate at /etc/apache2/sites-available/your_domain
 ```
-<VirtualHost domain1:80>
-     ServerName domain1.com
-     DocumentRoot /var/www/domain1.com/public_html
+<VirtualHost your_domain:80>
+     ServerName your_domain
+     DocumentRoot /var/www/your_domain/public
 
-     <Directory /var/www/domain1.com />
+     <Directory /var/www/your_domain />
      Options Indexes FollowSymLinks
      AllowOverride All
      Require all granted
      </Directory>
 
-     ErrorLog ${APACHE_LOG_DIR}/domain1.com-error.log
-     CustomLog ${APACHE_LOG_DIR}/domain1.com-access.log combined
+     ErrorLog ${APACHE_LOG_DIR}/your_domain-error.log
+     CustomLog ${APACHE_LOG_DIR}/your_domain-access.log combined
 </VirtualHost>
 ```
 
@@ -130,16 +130,15 @@ sudo ln -s /etc/apache2/sites-available/yourdomain.com.conf /etc/apache2/sites-e
 
 ## edit /etc/hosts
 ```
-127.0.0.1 domain1.com
+127.0.0.1 your_domain
 ```
 ## solve laravel-app code 500 error
 ```
 sudo chown -R www-data:www-data /var/www/laravel-app
 ```
-## set en-us as default charset, enable zh-cn
+## set en-us as default charset
 ```
 export LANG=en_US.UTF-8
-sudo apt install fonts-wqy-zenhei
 ```
 
 ## config nginx for PHP-FPM(php fastcgi process manager)
@@ -177,5 +176,5 @@ add soft link in sites-enabled
 sudo systemctl status php{version}-fpm
 ```
 
-### if there any issues, see detail in /var/log/nginx/error.log
+### if there exists any issues, see details in /var/log/nginx/error.log
 ### see php-fpm config in /etc/php/{version}/fpm/php-fpm.conf
