@@ -1,4 +1,4 @@
-# wsl2 php dev configs and commands
+# wsl2 php configs and commands
 
 ## set passwd for root
 ```
