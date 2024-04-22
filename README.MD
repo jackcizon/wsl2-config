@@ -136,6 +136,14 @@ sudo ln -s /etc/apache2/sites-available/yourdomain.com.conf /etc/apache2/sites-e
 ```
 sudo chown -R www-data:www-data /var/www/laravel-app
 ```
+
+## fix error
+UnexpectedValueException 
+ile "/var/www/laravel.test/storage/logs/laravel.log" could not be opened in append mode: Failed to open stream: Permission denied
+```sh
+sudo chmod -R 777 /var/www/laravel.test
+```
+
 ## set en-us as default charset
 ```
 export LANG=en_US.UTF-8
