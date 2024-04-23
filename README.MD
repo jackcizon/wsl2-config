@@ -51,6 +51,41 @@ sudo service redis-server start
 sudo service redis-server status
 ```
 
+## use phpredis client in proj
+```sh
+composer require predis/predis
+```
+
+## config redis
+
+in `.env`,
+```
+CACHE_DRIVER=redis
+```
+
+in `database.php`,
+```sh
+'redis' => [
+        
+        # use phpredis client
+        'client' => env('REDIS_CLIENT', 'phpredis'),
+
+        'options' => [
+            'cluster' => env('REDIS_CLUSTER', 'redis'),
+            // If no prefix is ​​required, just comment
+            // 'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+        ],
+# other configs
+]
+```
+
+in cache.php, change the default cache driver to `'redis'`
+algo can add comment:
+```
+// If no prefix is ​​required, just comment
+// 'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache_'),
+```
+
 ## go to wt(windows terminal), check docker-desktop
 ```
 docker image ls --all
