@@ -15,6 +15,8 @@ sudo apt install gedit -y
 sudo apt install nautilus -y
 sudo apt install vlc -y
 sudo apt install x11-apps -y
+sudo apt install mesa-utils -y
+sudo apt install libgl1-mesa-glx -y
 sudo apt install firefox
 sudo apt update
 firefox
@@ -63,16 +65,26 @@ export NVM_DIR="$HOME/.nvm"
 nvm install --lts
 nvm ls
 which npm
+npm install -g @vue/cli
 
 # install conda
 wget https://repo.anaconda.com/archive/Anaconda3-2023.07-1-Linux-x86_64.sh -O ~/anaconda.sh
 bash ~/anaconda.sh
 ~/anaconda3/bin/conda init
 conda --version
+conda env list
+conda activate <environment_name>
+conda create -n webdev python=3.9
+conda activate webdev
+conda install flask django
+pip install djangorestframework
+conda install -c conda-forge jupyterlab
+# check token，set password
+jupyter lab
+
 
 # config php.ini
 sudo apt install php8.1-mbstring php8.1-mysql php8.1-sockets php8.1-bz2 php8.1-gd php8.1-ftp php8.1-curl php8.1-openssl php8.1-xdebug
-
 
 # apache conf
 /etc/apache2/apache2.conf
