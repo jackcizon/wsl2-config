@@ -64,6 +64,12 @@ nvm install --lts
 nvm ls
 which npm
 
+# install conda
+wget https://repo.anaconda.com/archive/Anaconda3-latest-Linux-x86_64.sh -O ~/anaconda.sh
+bash ~/anaconda.sh
+~/anaconda3/bin/conda init
+conda --version
+
 # config php.ini
 sudo apt install php8.1-mbstring php8.1-mysql php8.1-sockets php8.1-bz2 php8.1-gd php8.1-ftp php8.1-curl php8.1-openssl php8.1-xdebug
 
