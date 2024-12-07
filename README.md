@@ -318,6 +318,7 @@ conda install -c <channel_name> django==3.2.16
 pip install django==3.2.16 # recommended, 'conda install' may cause error 
 conda update conda
 conda update --all
+```
 
 ### Export and Import via YAML
 
