@@ -130,3 +130,42 @@ sudo ln -s /etc/apache2/sites-available/yourdomain.com.conf /etc/apache2/sites-e
 
 #solve laravel-app code 500 error
 sudo chown -R www-data:www-data /var/www/laravel-app
+
+## conda 
+conda create -n myenv python=3.8
+conda remove -n myenv --all
+conda create --name cloned_env --clone myenv
+conda activate myenv
+conda activate other_env
+
+### export and import via yaml
+conda env create -f environment.yml
+conda env export > environment.yml
+conda env update -f environment.yml
+
+```yaml
+name: myenv
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - numpy=1.21
+  - pandas
+  - scipy
+  - pip
+  - pip:
+    - django==3.2.5
+    - requests>=2.26.0
+
+```
+
+conda install package_name
+conda remove package_name
+conda env list
+conda list
+
+### requirements.txt: export to .txt, intall from .txt 
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
