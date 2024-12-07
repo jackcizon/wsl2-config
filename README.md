@@ -315,7 +315,7 @@ conda config --add channels conda-forge
 conda config --set channel_priority flexible
 conda search django
 conda install -c <channel_name> django==3.2.16
-pip install django==3.2.16
+pip install django==3.2.16 # recommended, 'conda install' may cause error 
 conda update conda
 conda update --all
 
