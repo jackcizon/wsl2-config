@@ -1,4 +1,4 @@
-# WSL2 PHP Development Setup
+# WSL2 Development Setup
 
 ## Set Password for Root
 
