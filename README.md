@@ -288,6 +288,14 @@ sudo systemctl stop apache2
 
 ## Conda Management
 
+### install 
+
+```bash
+wget https://repo.anaconda.com/archive/Anaconda3-2023.07-1-Linux-x86_64.sh -O ~/anaconda.sh
+bash ~/anaconda.sh
+~/anaconda3/bin/conda init
+```
+
 ### Basic Commands
 
 ```bash
@@ -341,27 +349,4 @@ Install from `requirements.txt`:
 
 ```bash
 pip install -r requirements.txt
-```
-
-## install redis
-sudo apt update
-sudo apt install redis-server
-sudo service redis-server start
-sudo service redis-server status
-
-## setup python web dev config
-
-```bash
-wget https://repo.anaconda.com/archive/Anaconda3-2023.07-1-Linux-x86_64.sh -O ~/anaconda.sh
-bash ~/anaconda.sh
-~/anaconda3/bin/conda init
-conda --version
-conda env list
-conda activate <environment_name>
-conda create -n webdev python=3.9
-conda activate webdev
-conda install flask django
-pip install djangorestframework
-conda install -c conda-forge jupyterlab
-# check token，set password
 ```
