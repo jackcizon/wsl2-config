@@ -54,6 +54,7 @@ mysql --version
 sudo apt install mysql-server
 systemctl status mysql
 sudo mysql
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'yourpassword';
 mysql -u root -p
 systemctl status mysql
 ```
