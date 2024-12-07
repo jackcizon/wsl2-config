@@ -305,6 +305,20 @@ conda create --name cloned_env --clone myenv
 conda activate myenv
 ```
 
+### search a specific version of the library
+
+```bash
+conda update conda
+conda update --all
+conda config --show
+conda config --add channels conda-forge
+conda config --set channel_priority flexible
+conda search django
+conda install -c <channel_name> django==3.2.16
+pip install django==3.2.16
+conda update conda
+conda update --all
+
 ### Export and Import via YAML
 
 Export:
