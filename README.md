@@ -57,6 +57,10 @@ sudo mysql
 mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'yourpassword';
 mysql -u root -p
 systemctl status mysql
+
+sudo apt install pkg-config
+sudo apt install default-libmysqlclient-dev
+pip install mysqlclient
 ```
 
 ---
