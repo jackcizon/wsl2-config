@@ -369,3 +369,11 @@ Install from `requirements.txt`:
 ```bash
 pip install -r requirements.txt
 ```
+
+### django fix mysqldb error
+```python
+pip install pymysql
+# in proj pkg __init__.py, add
+# from pymsql install*...
+# install_as_*...
+```
