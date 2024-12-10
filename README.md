@@ -46,7 +46,7 @@ git config --global user.email "yourname@emaildomain"
 
 ---
 
-## Install MySQL and Set Password for Root
+## Install MySQL and config
 
 ```bash
 sudo apt update
@@ -61,17 +61,38 @@ systemctl status mysql
 sudo apt install pkg-config
 sudo apt install default-libmysqlclient-dev
 pip install mysqlclient
+
+sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
+bind-address = 0.0.0.0(all) or ip(specific)
+sudo service mysql restart
+sudo netstat -tuln | grep 3306
+mysql -h ip_addr -u user -p
+sudo cat /var/log/mysql/error.log
+```
+
+```sql
+CREATE USER 'jack'@'%' IDENTIFIED BY '111111';
+GRANT ALL PRIVILEGES ON *.* TO 'jack'@'%';
+# % == wildcard == any ipaddr
+# *.* == db_name.tables
 ```
 
 ---
 
-## Install Redis
+## Install Redis and config
 
 ```bash
 sudo apt update
 sudo apt install redis-server
 sudo service redis-server start
 sudo service redis-server status
+ps aux | grep redis
+sudo vim /etc/redis/redis.conf
+bind 0.0.0.0(all) or bind ip(specific)
+protected-mode no
+sudo systemctl restart redis
+sudo ufw allow 6379
+redis-cli -h ip_addr -p 6379
 ```
 
 ### Use `phpredis` Client in a Project
