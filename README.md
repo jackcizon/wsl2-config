@@ -44,6 +44,58 @@ git config --global user.name "yourname"
 git config --global user.email "yourname@emaildomain"
 ```
 
+## ufw config
+
+```bash
+sudo ufw status
+sudo ufw enable
+sudo ufw allow 22/tcp
+sudo ufw allow 3306/tcp
+sudo ufw allow 6379/tcp
+sudo ufw status
+sudo ufw reload
+```
+
+## remote-ssh config
+
+```bash
+sudo apt update
+sudo apt install openssh-server
+sudo service ssh start
+
+ssh-keygen -t rsa -b 4096 -C "username@example.com" -f ~/.ssh/<defyourname>_rsa
+cp ~/.ssh/<defyourname>_rsa* /mnt/c/Users/<win_username>/.ssh/
+sudo vim /etc/ssh/sshd_config
+sudo systemctl restart ssh
+cat ~/.ssh/authorized_keys
+cat my_server_rsa.pub
+cat my_server_rsa.pub >> ~/.ssh/authorized_keys
+cat authorized_keys
+sudo systemctl restart ssh
+
+ssh username@ipaddr -p portno #(default=22, config it in /etc/ssh/sshd_config)
+```
+
+### config remote-ssh in vscode
+
+```bash
+# edit in vscode remote-ssh
+Host wsl-ip
+  HostName wsl-ip
+  User username
+  Port 22
+  IdentityFile C:\Users\<username>\.ssh\<yourname>_rsa
+```
+
+### config github ssh
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "username@example.com" -f ~/.ssh/<defyourname>_rsa
+cat ~/.ssh/<defyourname>_rsa.pub
+# copy above output, paste it at https://github.com/settings/keys > ssh keys
+# test
+ssh -T git@github.com
+```
 ---
 
 ## Install MySQL and config
