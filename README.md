@@ -451,3 +451,12 @@ pip install cryptography
 # from pymsql install*...
 # install_as_*...
 ```
+
+## Kali
+
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y net-tools curl wget git
+sudo apt install -y kali-win-kex
+kex --win
+```
