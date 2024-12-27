@@ -460,3 +460,9 @@ sudo apt install -y net-tools curl wget git
 sudo apt install -y kali-win-kex
 kex --win
 ```
+
+## npm fix-up 
+
+```bash
+npm install --legacy-peer-deps
+```
