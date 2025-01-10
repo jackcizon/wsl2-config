@@ -466,3 +466,11 @@ kex --win
 ```bash
 npm install --legacy-peer-deps
 ```
+
+
+## Email Port config and test
+```bash
+sudo ufw allow 25 # 465,587
+telnet smtp.163.com 25
+### EMAIL_USE_SSL = True
+```
