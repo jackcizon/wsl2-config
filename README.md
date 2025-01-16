@@ -467,10 +467,23 @@ kex --win
 npm install --legacy-peer-deps
 ```
 
-
 ## Email Port config and test
+
 ```bash
 sudo ufw allow 25 # 465,587
 telnet smtp.163.com 25
 ### EMAIL_USE_SSL = True
+```
+
+## Docker & fastdfs
+
+```bash
+sudo ufw allow 22122/tcp
+sudo ufw allow 23000/tcp
+sudo ufw reload
+sudo docker network create fastdfs-network # bridge(virtual)
+sudo docker run -dit --name tracker --network=fastdfs-network -v /var/fdfs/tracker:/var/fdfs delron/fastdfs tracker
+sudo docker run -dit --name storage --network=fastdfs-network -e TRACKER_SERVER=tracker:22122 -v /var/fdfs/storage:/var/fdfs delron/fastdfs storage
+sudo mkdir -p /var/fdfs/tracker /var/fdfs/storage
+sudo chmod -R 777 /var/fdfs
 ```
