@@ -487,3 +487,10 @@ sudo docker run -dit --name storage --network=fastdfs-network -e TRACKER_SERVER=
 sudo mkdir -p /var/fdfs/tracker /var/fdfs/storage
 sudo chmod -R 777 /var/fdfs
 ```
+
+## scp
+
+```bash
+scp C:\path\to\file.json username@192.168.X.X:/home/username/
+# or install WinSCP
+```
