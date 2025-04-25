@@ -1,5 +1,14 @@
 # WSL2 Development Setup
 
+
+## npm legacy
+```shell
+npm config set legacy-peer-deps true
+npm install -g pnpm
+rm -rf node_modules package-lock.json pnpm-lock.yaml
+pnpm install --shamefully-hoist
+```
+
 ## Set Password for Root
 
 ```bash
