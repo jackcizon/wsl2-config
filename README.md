@@ -208,9 +208,14 @@ sudo apt update
 ## Install C/C++ Tools
 
 ```bash
-sudo apt install g++ gdb make ninja-build rsync zip
+sudo apt update
 sudo apt-get install curl
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+sudo apt install -y build-essential
+sudo apt install -y gdb
+sudo apt install -y make
+sudo apt install -y cmake
+# sudo apt install clang lldb lld clang-format
+# sudo apt install -y ninja-build
 ```
 
 ---
@@ -218,6 +223,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 ## Install Node.js
 
 ```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 command -v nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
