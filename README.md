@@ -1,6 +1,5 @@
 # WSL2 Development Setup
 
-
 ## npm legacy
 ```shell
 npm config set legacy-peer-deps true
@@ -501,6 +500,56 @@ sudo docker run -dit --name tracker --network=fastdfs-network -v /var/fdfs/track
 sudo docker run -dit --name storage --network=fastdfs-network -e TRACKER_SERVER=tracker:22122 -v /var/fdfs/storage:/var/fdfs delron/fastdfs storage
 sudo mkdir -p /var/fdfs/tracker /var/fdfs/storage
 sudo chmod -R 777 /var/fdfs
+```
+
+## Wsl with Docker-desktop
+
+```bash
+# pull
+docker pull mariadb:11
+
+#  run
+docker run -d --name dev_mariadb -e MARIADB_ROOT_PASSWORD=root123 -p 3307:3306 mariadb:11
+
+# see process
+docker ps | grep mariadb
+
+# test local-wsl, allow root can do everyting
+mysql -h 127.0.0.1 -P 3307 -u root -p
+# GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'yourpassword';
+# FLUSH PRIVILEGES;
+
+# allow port
+sudo ufw status
+sudo ufw allow 3307
+sudo ufw reload
+
+# go to docker container inner
+docker exec -it dev_mariadb bash
+
+#####
+in docker process inner
+#####
+# update and install vim, then change conf
+# apt update
+# apt install vim
+vim /etc/mysql/my.cnf
+# add conf to allow any address (it will allow windows sql tools like navicat to easily manage docker's mariadb)
+# [mysqld]
+# bind-address = 0.0.0.0
+# exit
+
+# restart container
+docker restart dev_mariadb
+
+# change 
+# see real ip
+ip addr
+# use sql tool to test connection with real ip in wsl
+# docker run -d --name dev_mariadb -e MARIADB_ROOT_PASSWORD=root123 -p 3307:3306 mariadb:11
+# user: root
+# pwd: root123
+# also can create new dbs and manage them
 ```
 
 ## scp
